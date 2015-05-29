@@ -13,7 +13,6 @@ public class Cliente {
         envio = new Socket("localhost", 80);
 	}
 	public void enviar(String informacao) throws Exception  {
-        int SetPoint = 3;
         PrintWriter out = new PrintWriter(envio.getOutputStream(), true);
         out.print(informacao);
         

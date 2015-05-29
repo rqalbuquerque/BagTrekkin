@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 import WiFi.Cliente;
 
@@ -13,7 +14,7 @@ public class LeitorRfid {
 	//cria um leitor
 	public LeitorRfid() throws Exception {
 
-		// reader.setConnection("COM1");
+		//reader.setConnection("COM22");
 
 		// To connect to a networked reader instead, use the following:
 		// 192.168.8.54:23
@@ -55,6 +56,11 @@ public class LeitorRfid {
 			cliente.enviar(envio);
 		}
 	}
+	
+	public void enviar(String str) throws Exception{
+		cliente.enviar(str);
+	}
+	
 	public void encerrar() throws IOException{
 		// Close the connection
 		cliente.encerrar();
@@ -64,13 +70,25 @@ public class LeitorRfid {
 	// main para testes
 	public static final void main(String args[]) throws Exception {
 		LeitorRfid leitor = new LeitorRfid();
+		int opcao;
 		
+		Scanner entrada = new Scanner(System.in); 
+		opcao = entrada.nextInt();
 		while (true) {
-			try {
-				leitor.read();
-			} catch (AlienReaderException e) {
-				leitor.encerrar();
-				System.out.println("Error: " + e.toString());
+			switch (opcao){
+				case 1:
+					System.out.println("Digite o numero do voo:");
+					String voo = entrada.nextLine();
+					leitor.enviar(voo);
+					break;
+				case 2:
+					try {
+						leitor.read();
+					} catch (AlienReaderException e) {
+						leitor.encerrar();
+						System.out.println("Error: " + e.toString());
+					}
+					break;
 			}
 		}
 	}
