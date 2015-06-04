@@ -1,20 +1,20 @@
 package Modelo;
 
 public class Mala {
-	int tag;
-	String passageiro;
+	private String tag;
+	private String passageiro;
 	
-	public Mala(int tag, String passageiro) {
+	public Mala(String tag, String passageiro) {
 		super();
 		this.tag = tag;
 		this.passageiro = passageiro;
 	}
 	
-	public int getTag() {
+	public String getTag() {
 		return tag;
 	}
 	
-	public void setTag(int tag) {
+	public void setTag(String tag) {
 		this.tag = tag;
 	}
 	

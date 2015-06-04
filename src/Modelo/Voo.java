@@ -3,14 +3,18 @@ package Modelo;
 import java.util.List;
 
 public class Voo {
-	int numero;
-	List<Mala> malas;
+	private String numero;
+	private List<Mala> malas;
 	
-	public int getNumero() {
+	public void Voo(String numero){
+		this.numero = numero;
+	}
+	
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
@@ -22,10 +26,20 @@ public class Voo {
 		this.malas = malas;
 	}
 
-	public Voo(int numero, List<Mala> malas) {
+	public Voo(String numero, List<Mala> malas) {
 		super();
 		this.numero = numero;
 		this.malas = malas;
 	}
-
+	
+	public String formataStringVoo(){
+		String strVoo = "";
+		
+		strVoo += numero + "\n";
+		for(Mala item : malas){
+			strVoo += item.getTag() + "\n";
+		}
+		
+		return strVoo;
+	}
 }
